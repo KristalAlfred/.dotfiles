@@ -1,6 +1,14 @@
 -- Switch to file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- TODO(kristalalfred): move to telescope file browser
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<space>pv",
+--   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+--   { noremap = true }
+-- )
+
 -- Move selected text up and down, like in VSCode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -84,6 +92,8 @@ rt.setup({
 -- ####
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<leader>pg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>hh', builtin.help_tags, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ")});
