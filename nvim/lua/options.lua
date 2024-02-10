@@ -1,3 +1,7 @@
+-- This enables 24-bit color, which is useful for most external colorschemes.
+-- I think it looks better without for now though.
+vim.opt.termguicolors = false
+
 vim.opt.nu = true
 
 vim.opt.keywordprg = ':help' -- Fix 'K' issue..
