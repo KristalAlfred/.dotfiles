@@ -1,3 +1,4 @@
+-- Goal: Source all files in ./plugins/
 local function get_plugin_files()
   local output = vim.fn.systemlist("find ~/.config/nvim/lua/plugins -maxdepth 1 -name '*.lua'")
   local plugins = {}
