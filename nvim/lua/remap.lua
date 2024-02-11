@@ -72,6 +72,11 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 require("lsp")
 
 -- ####
+-- Which Key
+-- ###
+require("which-key").setup()
+
+-- ####
 -- Rust Tools
 -- ####
 local rt = require("rust-tools")
