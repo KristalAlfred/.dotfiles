@@ -113,7 +113,7 @@ if vim.g.vscode then
     isInVSCode = true
 end
 
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = {"vue", "javascript", "typescript", "rust", "c", "lua", "vim", "vimdoc", "query"},
 
@@ -142,3 +142,8 @@ require'nvim-treesitter.configs'.setup {
 -- Undo Tree
 -- ####
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- ####
+-- Treesitter textobjects
+-- ####
+require('nvim-treesitter-textobjects')
