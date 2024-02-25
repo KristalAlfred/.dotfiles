@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Visually select containers
 dsel() {
 docker ps --format "{{.Names}}\t{{.Image}}\t{{.ID}}\t{{.CreatedAt}}" | awk '
