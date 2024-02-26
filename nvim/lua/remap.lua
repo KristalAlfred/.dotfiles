@@ -152,8 +152,6 @@ require('nvim-treesitter.configs').setup {
                 ["ic"] = "@class.inner",
                 ["as"] = "@block.outer", -- s for scope
                 ["is"] = "@block.inner",
-                ["rh"] = "@assignment.rhs",
-                ["lh"] = "@assignment.lhs",
                 ["ia"] = "@assignment.outer", -- assignment inner behaves weirdly imo
                 ["iq"] = "@parameter.inner", -- assignment inner behaves weirdly imo
             }
@@ -194,3 +192,21 @@ vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 -- Undo Tree
 -- ####
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- ###
+-- zk
+-- ###
+local opts = { noremap=true, silent=false }
+
+-- Create a new note after asking for its title.
+vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
+
+-- Open notes.
+vim.api.nvim_set_keymap("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)
+-- Open notes associated with the selected tags.
+vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
+
+-- Search for the notes matching a given query.
+vim.api.nvim_set_keymap("n", "<leader>zf", "<Cmd>ZkNotes<CR>", opts)
+-- Search for the notes matching the current visual selection.
+vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
