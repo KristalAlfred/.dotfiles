@@ -1,14 +1,6 @@
 -- Switch to file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
--- TODO(kristalalfred): move to telescope file browser
--- vim.api.nvim_set_keymap(
---   "n",
---   "<space>pv",
---   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
---   { noremap = true }
--- )
-
 -- Join the current line and the one below
 vim.keymap.set("n", "J", "mzJ`z")
 
@@ -95,11 +87,11 @@ vim.keymap.set("n", "äl", vim.cmd.lnext, { desc = "Next Location List" })
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
-  return function()
-    go({ severity = severity })
-  end
+    local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+    severity = severity and vim.diagnostic.severity[severity] or nil
+    return function()
+        go({ severity = severity })
+    end
 end
 
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
@@ -134,11 +126,6 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 -- LSP
 -- ####
 require("lsp")
-
--- ####
--- Which Key
--- ###
-require("which-key").setup()
 
 -- ####
 -- Rust Tools
@@ -214,10 +201,10 @@ require('nvim-treesitter.configs').setup {
                 ["if"] = "@function.inner",
                 ["ac"] = "@class.outer",
                 ["ic"] = "@class.inner",
-                ["as"] = "@block.outer", -- s for scope
+                ["as"] = "@block.outer",      -- s for scope
                 ["is"] = "@block.inner",
                 ["ia"] = "@assignment.outer", -- assignment inner behaves weirdly imo
-                ["iq"] = "@parameter.inner", -- assignment inner behaves weirdly imo
+                ["iq"] = "@parameter.inner",  -- assignment inner behaves weirdly imo
             }
         },
         swap = {
@@ -260,7 +247,7 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 -- ###
 -- zk
 -- ###
-local opts = { noremap=true, silent=false }
+local opts = { noremap = true, silent = false }
 
 -- Create a new note after asking for its title.
 vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
@@ -280,11 +267,11 @@ vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
 -- Conform (formatting)
 -- ###
 require("conform").setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    -- Conform will run multiple formatters sequentially
-    python = { "isort", "black" },
-    -- Use a sub-list to run only the first available formatter
-    javascript = { { "prettierd", "prettier" } },
-  },
+    formatters_by_ft = {
+        lua = { "stylua" },
+        -- Conform will run multiple formatters sequentially
+        python = { "isort", "black" },
+        -- Use a sub-list to run only the first available formatter
+        javascript = { { "prettierd", "prettier" } },
+    },
 })
