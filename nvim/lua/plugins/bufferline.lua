@@ -32,6 +32,9 @@ return {
             --         text_align = "left",
             --     },
             -- },
+            indicator = {
+                style = 'underline'
+            }
         },
     },
     config = function(_, opts)
