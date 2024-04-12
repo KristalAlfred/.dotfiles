@@ -4,7 +4,8 @@ docker ps --format "{{.Names}}\t{{.Image}}\t{{.ID}}\t{{.CreatedAt}}" | awk '
   {
     # Adjust the output format here
     printf("%-20s\t%-30s\t%s\t%s\n", $1, $2, $3, $4 " " $5 " " $6);
-  }' | fzf -m}
+  }' | fzf -m
+}
 
 # Output ID of chosen containers
 did() {
@@ -91,3 +92,4 @@ dimgrm() {
     fi
   fi
 }
+
