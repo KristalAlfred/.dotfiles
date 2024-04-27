@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 
 -- Switch to file explorer
-vim.keymap.set("n", "<leader>pv", ":Neotree toggle<cr>")
+vim.keymap.set("n", "<leader>pv", ":Neotree toggle reveal<cr>")
 
 -- Page up and page down but center cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
